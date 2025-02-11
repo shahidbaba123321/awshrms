@@ -1,21 +1,42 @@
 {
   "name": "workwise-pro",
   "version": "1.0.0",
-  "description": "Workwise Pro - AI-Powered HR Management",
+  "description": "Workwise Pro - HR Management System",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "express": "^4.17.1",
-    "pg": "^8.7.1",
+    "mysql2": "^2.3.3",
     "bcrypt": "^5.0.1",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "^4.0.0"
+    "path": "^0.12.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "helmet": "^5.0.2",
+    "compression": "^1.7.4",
+    "express-rate-limit": "^6.3.0"
   },
   "engines": {
     "node": ">=14.0.0"
   },
+  "keywords": [
+    "hrms",
+    "management",
+    "aws",
+    "elastic-beanstalk",
+    "mysql"
+  ],
   "author": "Your Name",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "your-repository-url"
+  },
+  "bugs": {
+    "url": "your-repository-url/issues"
+  },
+  "homepage": "your-repository-url#readme"
 }
