@@ -4,9 +4,7 @@
   "description": "Workwise Pro - HR Management System",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "init-db": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -21,14 +19,5 @@
   },
   "engines": {
     "node": ">=14.0.0"
-  },
-  "keywords": [
-    "hrms",
-    "management",
-    "aws",
-    "elastic-beanstalk",
-    "mysql"
-  ],
-  "author": "Your Name",
-  "license": "MIT"
+  }
 }
