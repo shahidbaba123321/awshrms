@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People Management - Workwise Pro</title>
+    <link rel="stylesheet" href="peoplestyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay"></div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="https://workpro.onrender.com">Workwise Pro</a></h1>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="nav-menu">
+                <ul id="nav-list">
+                    <li><a href="features.html">Features</a></li>
+                    <li class="dropdown">
+                        <a href="#">HR/Accounts Modules <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="peoplemanagement.html">People Management</a></li>
+                            <li><a href="pms.html">Performance Management</a></li>
+                            <li><a href="payroll.html">Payroll Management</a></li>
+                            <li><a href="bookkeeping.html">Book-keeping</a></li>
+                            <li><a href="payint.html">Payroll Integration</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Business Operations <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="smartexpenses.html">SmartExpenses</a></li>
+                            <li><a href="shiftmaster.html">ShiftMaster</a></li>
+                            <li><a href="cs.html">FlexHire - Coming Soon</a></li>
+                            <li><a href="stockflow.html">StockFlow</a></li>
+                            <li><a href="globalinvoice.html">GlobalInvoice</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="login.html">Sign In</a></li>
+                    <li><a href="signup.html" class="btn primary">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="people-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Empower Your Workforce with Intelligent People Management</h1>
+                <p>Streamline HR operations, foster engagement, and drive growth with our all-in-one HRMS solution.</p>
+                <div class="hero-cta">
+                    <a href="#demo" class="btn primary">Request Demo</a>
+                    <a href="#features" class="btn secondary">Get Started Today</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="image/people-management-hero.png" alt="People Management Dashboard">
+            </div>
+        </div>
+    </section>
+
+    <!-- System Overview Section -->
+    <section class="system-overview" id="overview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Transform Your HR Operations</h2>
+                <p>Streamline employee management, optimize workflows, and enhance the employee experience with our comprehensive HRMS solution.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Improved Efficiency</h3>
+                    <p>Automate routine tasks and reduce administrative overhead.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Data-Driven Decisions</h3>
+                    <p>Make informed decisions with powerful analytics and insights.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-smile"></i>
+                    <h3>Enhanced Satisfaction</h3>
+                    <p>Boost employee engagement and satisfaction with self-service tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Employee Profile & Directory Section -->
+    <section class="profiles-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Comprehensive Employee Profiles</h2>
+                <p>Manage detailed employee information and navigate your organization with ease.</p>
+            </div>
+            <div class="feature-block">
+                <div class="feature-content">
+                    <h3>Interactive Employee Directory</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Detailed employee profiles</li>
+                        <li><i class="fas fa-check"></i> Advanced search and filtering</li>
+                        <li><i class="fas fa-check"></i> Department-wise organization</li>
+                    </ul>
+                    <a href="#" class="learn-more">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-image">
+                    <div class="dashboard-preview">
+                        <img src="image/employee-directory.png" alt="Employee Directory Interface">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+       <!-- Organizational Chart Section -->
+    <section class="org-chart-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Dynamic Organizational Structure</h2>
+                <p>Visualize and manage your organization's hierarchy with interactive org charts.</p>
+            </div>
+            <div class="feature-block reverse">
+                <div class="feature-content">
+                    <h3>Interactive Org Charts</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Visual reporting lines</li>
+                        <li><i class="fas fa-check"></i> Drag-and-drop team management</li>
+                        <li><i class="fas fa-check"></i> Real-time updates</li>
+                    </ul>
+                    <a href="#" class="learn-more">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-image">
+                    <div class="dashboard-preview">
+                        <img src="image/org-chart.png" alt="Organizational Chart Interface">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recruitment & Onboarding Section -->
+    <section class="recruitment-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Streamlined Recruitment & Onboarding</h2>
+                <p>Simplify your hiring process and create a seamless experience for new employees.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3>Recruitment Pipeline</h3>
+                    <p>Track applicants, manage interviews, and streamline hiring decisions.</p>
+                    <a href="#" class="learn-more">Explore features <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Automated Onboarding</h3>
+                    <p>Guide new hires through a structured onboarding process.</p>
+                    <a href="#" class="learn-more">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h3>Document Management</h3>
+                    <p>Digitize paperwork and automate document workflows.</p>
+                    <a href="#" class="learn-more">View details <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Employee Self-Service Section -->
+    <section class="self-service-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Empower Your Employees</h2>
+                <p>Give your workforce the tools they need to manage their work life efficiently.</p>
+            </div>
+            <div class="feature-block">
+                <div class="feature-content">
+                    <h3>Self-Service Portal</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Update personal information</li>
+                        <li><i class="fas fa-check"></i> View pay stubs and benefits</li>
+                        <li><i class="fas fa-check"></i> Request leave and track attendance</li>
+                    </ul>
+                    <a href="#" class="learn-more">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-image">
+                    <div class="dashboard-preview">
+                        <img src="image/self-service-portal.png" alt="Self-Service Portal Interface">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance & Engagement Section -->
+    <section class="performance-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Drive Performance & Engagement</h2>
+                <p>Create a culture of continuous feedback and recognition.</p>
+            </div>
+            <div class="feature-block reverse">
+                <div class="feature-content">
+                    <h3>360° Feedback System</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Peer feedback and reviews</li>
+                        <li><i class="fas fa-check"></i> Engagement surveys</li>
+                        <li><i class="fas fa-check"></i> Recognition programs</li>
+                    </ul>
+                    <a href="#" class="learn-more">Learn more <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="feature-image">
+                    <div class="dashboard-preview">
+                        <img src="image/performance-feedback.png" alt="Performance Feedback Interface">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analytics & Reporting Section -->
+    <section class="analytics-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Data-Driven HR Insights</h2>
+                <p>Make informed decisions with powerful analytics and reporting tools.</p>
+            </div>
+            <div class="analytics-showcase">
+                <div class="analytics-features">
+                    <div class="analytics-card">
+                        <h3>HR Analytics</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Workforce demographics</li>
+                            <li><i class="fas fa-check"></i> Attrition analysis</li>
+                            <li><i class="fas fa-check"></i> Engagement metrics</li>
+                        </ul>
+                    </div>
+                    <div class="analytics-card">
+                        <h3>Custom Reports</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Customizable dashboards</li>
+                            <li><i class="fas fa-check"></i> Export capabilities</li>
+                            <li><i class="fas fa-check"></i> Scheduled reports</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="analytics-preview">
+                    <img src="image/hr-analytics.png" alt="HR Analytics Dashboard">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration Section -->
+    <section class="integration-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Seamless Integrations</h2>
+                <p>Connect with your favorite tools and create a unified HR ecosystem.</p>
+            </div>
+            <div class="integration-grid">
+                <div class="integration-card">
+                    <img src="image/payroll-integration.png" alt="Payroll">
+                    <h4>Payroll Systems</h4>
+                </div>
+                <div class="integration-card">
+                    <img src="image/erp-integration.png" alt="ERP">
+                    <h4>ERP Platforms</h4>
+                </div>
+                <div class="integration-card">
+                    <img src="image/communication-integration.png" alt="Communication">
+                    <h4>Communication Tools</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section class="security-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Enterprise-Grade Security</h2>
+                <p>Your employee data is protected with the highest security standards.</p>
+            </div>
+            <div class="security-features">
+                <div class="security-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Data Protection</h3>
+                    <ul>
+                        <li>End-to-end encryption</li>
+                        <li>Regular security audits</li>
+                        <li>Automated backups</li>
+                    </ul>
+                </div>
+                <div class="security-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Compliance</h3>
+                    <ul>
+                        <li>GDPR compliant</li>
+                        <li>ISO 27001 certified</li>
+                        <li>SOC 2 Type II</li>
+                    </ul>
+                </div>
+                <div class="security-card">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Access Control</h3>
+                    <ul>
+                        <li>Role-based access</li>
+                        <li>Multi-factor authentication</li>
+                        <li>Activity logging</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Success Stories</h2>
+                <p>See how organizations are transforming their HR operations with Workwise Pro.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Workwise Pro has revolutionized our HR processes. We've seen a 40% reduction in administrative tasks."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="image/testimonial1.webp" alt="Testimonial Author">
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>HR Director, Tech Solutions Inc.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more testimonial cards -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ready to Transform Your HR Operations?</h2>
+                <p>Get started with Workwise Pro today and see the difference.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn primary">Request Demo</a>
+                    <a href="#" class="btn secondary">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#integrations">Integrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Developers</h4>
+                    <ul>
+                        <li><a href="#api-docs">API Documentation</a></li>
+                        <li><a href="#sdk">SDKs & Tools</a></li>
+                        <li><a href="#status">System Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Workwise Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="peoplescript.js"></script>
+</body>
+</html>

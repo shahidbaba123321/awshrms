@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workwise Pro - AI-Powered HR Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sentiment@5.0.2/build/sentiment.min.js"></script>
+    <!-- Include Three.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r150/three.min.js"></script>
+</head>
+<body>
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay"></div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="https://workpro.onrender.com">Workwise Pro</a></h1>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="nav-menu">
+                <ul id="nav-list">
+                    <li><a href="features.html">Features</a></li>
+                    <li class="dropdown">
+                        <a href="#">HR/Accounts Modules <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="peoplemanagement.html">People Management</a></li>
+                            <li><a href="pms.html">Performance Management</a></li>
+                            <li><a href="payroll.html">Payroll Management</a></li>
+                            <li><a href="bookkeeping.html">Book-keeping</a></li>
+                            <li><a href="payint.html">Payroll Integration</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Business Operations <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="smartexpenses.html">SmartExpenses</a></li>
+                            <li><a href="shiftmaster.html">ShiftMaster</a></li>
+                            <li><a href="cs.html">FlexHire - Coming Soon</a></li>
+                            <li><a href="stockflow.html">StockFlow</a></li>
+                            <li><a href="globalinvoice.html">GlobalInvoice</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="login.html">Sign In</a></li>
+                    <li><a href="signup.html" class="btn primary">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transform HR with AI-Powered Tools</h1>
+                <p>Streamline recruitment, performance management, and payroll with next-generation HR solutions.</p>
+                <div class="hero-buttons">
+                    <a href="#signup" class="btn hero-btn-primary">Start Free Trial</a>
+                    <a href="#demo" class="btn hero-btn-secondary">Schedule Demo</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="image/hero-image.png" alt="HR Management Dashboard" class="animate-float">
+            </div>
+        </div>
+    </section>
+
+ <!-- New 3D Experience Section -->
+    <section id="three-demo" class="three-demo">
+        <div class="container">
+            <h2>3D Experience</h2>
+            <p>Explore our interactive 3D demo powered by Three.js.</p>
+            <div id="three-container"></div>
+        </div>
+    </section>
+    
+    <!-- Feature Showcase -->
+    <section id="features" class="feature-showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2>AI-Powered Features</h2>
+                <p>Experience the future of HR management with our cutting-edge tools</p>
+            </div>
+            <div class="feature-grid">
+                
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Performance Analytics</h3>
+                    <p>Real-time performance tracking with predictive insights.</p>
+                    <a href="#learn-more" class="learn-more">
+                        Learn More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Smart Learning</h3>
+                    <p>NLP-powered learning recommendations and skill gap analysis.</p>
+                    <a href="#learn-more" class="learn-more">
+                        Learn More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Bookkeeping</h3>
+                    <p>Manage financial records seamlessly.</p>
+                    <a href="#learn-more" class="learn-more">
+                        Learn More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-money-check-alt"></i>
+                    <h3>Payroll Management</h3>
+                    <p>Automate payroll processing with precision.</p>
+                    <a href="#learn-more" class="learn-more">
+                        Learn More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-link"></i>
+                    <h3>ADP Integration</h3>
+                    <p>Effortlessly integrate with ADP for workforce solutions.</p>
+                    <a href="#learn-more" class="learn-more">
+                        Learn More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>People Management</h3>
+                    <p>Optimize talent acquisition, engagement, and retention.</p>
+                    <a href="#learn-more" class="learn-more">
+                        Learn More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Demo for AI Sense Section -->
+<!-- Demo for AI Sense Section -->
+<section class="ai-sense-demo">
+    <div class="container">
+        <h2>Demo for AI Sense</h2>
+        <p>Experience how our AI system calculates sentiments and integrates with performance feedback.</p>
+        <div class="demo-widget">
+            <textarea id="feedback-input" placeholder="Enter your feedback here..." aria-label="Feedback input"></textarea>
+            <button id="analyze-button" class="btn primary">Analyze</button>
+            <div id="sentiment-result"></div>
+        </div>
+    </div>
+</section>
+    
+    <!-- Performance Management Section -->
+    <section class="performance-management">
+        <div class="container">
+            <div class="performance-content">
+                <h2>Performance management at its best</h2>
+                <p>Enrich the talent that nurtures your business...</p>
+                <ul>
+                    <li>Flexible goal setting and KRA mapping</li>
+                    <li>Continuous reviews and performance appraisals</li>
+                    <li>360-degree feedback</li>
+                    <li>Analytics to identify performance gaps</li>
+                </ul>
+                <a href="#learn-more">Learn more</a>
+            </div>
+            <div class="performance-image">
+                <img src="image/p1.jpg" alt="Performance Management">
+            </div>
+        </div>
+    </section>
+
+    <!-- Time and Attendance Section -->
+    <section class="time-attendance">
+        <div class="container">
+            <div class="attendance-content">
+                <h2>Optimize your time and attendance</h2>
+                <p>Spend less time tracking time and days off...</p>
+                <ul>
+                    <li>Track attendance with ease</li>
+                    <li>Schedule shifts effortlessly</li>
+                    <li>Track days off efficiently</li>
+                    <li>Convert time to timesheets</li>
+                </ul>
+                <a href="#learn-more">Learn more</a>
+            </div>
+            <div class="attendance-image">
+                <img src="image/p2.jpg" alt="Time and Attendance">
+            </div>
+        </div>
+    </section>
+
+    <!-- Core HR Section -->
+    <section class="core-hr">
+        <div class="container">
+            <div class="core-content">
+                <h2>Core HR simplified</h2>
+                <p>Say goodbye to mundane spreadsheets...</p>
+                <ul>
+                    <li>An employee database that scales</li>
+                    <li>Efficient employee case management</li>
+                    <li>Smart HR workflows</li>
+                    <li>Insightful analytics</li>
+                </ul>
+                <a href="#learn-more">Learn more</a>
+            </div>
+            <div class="core-image">
+                <img src="image/p3.jpg" alt="Core HR">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#integrations">Integrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Developers</h4>
+                    <ul>
+                        <li><a href="#api-docs">API Documentation</a></li>
+                        <li><a href="#sdk">SDKs & Tools</a></li>
+                        <li><a href="#status">System Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                
+                <p>&copy; 2023 Workwise Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+<script>
+    window.watsonAssistantChatOptions = {
+    integrationID: "0d8f63ed-b096-4124-b9dc-da7feef326c6", // The ID of this integration.
+    region: "au-syd", // The region your integration is hosted in.
+    serviceInstanceID: "0ba22484-af3d-464a-8bbf-eb6a296701bf", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script>
+    <script src="script.js"></script>
+</body>
+</html>

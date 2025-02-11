@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Payroll Solution - Workwise Pro</title>
+    <link rel="stylesheet" href="payrollstyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay"></div>
+
+    <!-- Header Section [Same as previous pages] -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="https://workpro.onrender.com">Workwise Pro</a></h1>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="nav-menu">
+                <ul id="nav-list">
+                    <li><a href="features.html">Features</a></li>
+                    <li class="dropdown">
+                        <a href="#">HR/Accounts Modules <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="peoplemanagement.html">People Management</a></li>
+                            <li><a href="pms.html">Performance Management</a></li>
+                            <li><a href="payroll.html">Payroll Management</a></li>
+                            <li><a href="bookkeeping.html">Book-keeping</a></li>
+                            <li><a href="payint.html">Payroll Integration</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Business Operations <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="smartexpenses.html">SmartExpenses</a></li>
+                            <li><a href="shiftmaster.html">ShiftMaster</a></li>
+                            <li><a href="cs.html">FlexHire - Coming Soon</a></li>
+                            <li><a href="stockflow.html">StockFlow</a></li>
+                            <li><a href="globalinvoice.html">GlobalInvoice</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="login.html">Sign In</a></li>
+                    <li><a href="signup.html" class="btn primary">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="payroll-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Unified Global Payroll Solution</h1>
+                    <h2>Empowering Your Business Across India, USA, UAE & Qatar</h2>
+                    <p>Automate payroll, ensure regulatory compliance, and streamline HR operations with a single, powerful platform designed for diverse markets.</p>
+                    <div class="hero-cta">
+                        <a href="#demo" class="btn primary">Request Demo</a>
+                        <a href="#features" class="btn secondary">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="image/global-payroll.png" alt="Global Payroll Solution">
+                    <div class="country-icons">
+                        <span class="country-icon"><i class="fas fa-map-marker-alt"></i> India</span>
+                        <span class="country-icon"><i class="fas fa-map-marker-alt"></i> USA</span>
+                        <span class="country-icon"><i class="fas fa-map-marker-alt"></i> UAE</span>
+                        <span class="country-icon"><i class="fas fa-map-marker-alt"></i> Qatar</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Overview Section -->
+        <section class="system-overview">
+            <div class="container">
+                <div class="section-header">
+                    <h2>End-to-End Payroll Management</h2>
+                    <p>A comprehensive cloud-based solution that automates your entire payroll process while ensuring compliance across multiple jurisdictions.</p>
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Time Savings</h3>
+                        <p>Reduce payroll processing time by up to 70% with automated calculations and workflows.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Enhanced Accuracy</h3>
+                        <p>Minimize errors with automated calculations and built-in compliance checks.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Real-time Insights</h3>
+                        <p>Access instant payroll analytics and reports for better decision-making.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Features Section -->
+<section class="key-features">
+    <div class="container">
+        <div class="section-header">
+            <h2>Powerful Features for Global Payroll</h2>
+            <p>Everything you need to manage payroll efficiently across multiple countries.</p>
+        </div>
+        <div class="features-grid">
+            <!-- Automated Processing -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>Automated Processing</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Real-time calculations</li>
+                    <li><i class="fas fa-check"></i> Multi-currency support</li>
+                    <li><i class="fas fa-check"></i> Automated deductions</li>
+                </ul>
+            </div>
+            <!-- Compliance & Regulations -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Compliance & Regulations</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Built-in tax updates</li>
+                    <li><i class="fas fa-check"></i> Statutory filings</li>
+                    <li><i class="fas fa-check"></i> Automated reporting</li>
+                </ul>
+            </div>
+            <!-- Self-Service Portal -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Self-Service Portal</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Digital payslips</li>
+                    <li><i class="fas fa-check"></i> Tax documents</li>
+                    <li><i class="fas fa-check"></i> Mobile access</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+        <!-- Regional Compliance Section -->
+        <section class="regional-compliance">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Global Compliance Made Simple</h2>
+                    <p>Built-in compliance for multiple regions, ensuring your payroll meets local regulations.</p>
+                </div>
+                <div class="regions-grid">
+                    <!-- India -->
+                    <div class="region-card">
+                        <div class="region-icon">
+                            <img src="image/india-flag.png" alt="India">
+                        </div>
+                        <h3>India</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> EPF & ESI calculations</li>
+                            <li><i class="fas fa-check"></i> TDS & Professional Tax</li>
+                            <li><i class="fas fa-check"></i> Labor law compliance</li>
+                            <li><i class="fas fa-check"></i> Statutory reporting</li>
+                        </ul>
+                    </div>
+                    <!-- USA -->
+                    <div class="region-card">
+                        <div class="region-icon">
+                            <img src="image/usa-flag.png" alt="USA">
+                        </div>
+                        <h3>USA</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Federal & State taxes</li>
+                            <li><i class="fas fa-check"></i> 401(k) management</li>
+                            <li><i class="fas fa-check"></i> Multi-state processing</li>
+                            <li><i class="fas fa-check"></i> Benefits integration</li>
+                        </ul>
+                    </div>
+                    <!-- UAE -->
+                    <div class="region-card">
+                        <div class="region-icon">
+                            <img src="image/uae-flag.png" alt="UAE">
+                        </div>
+                        <h3>UAE</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> WPS compliance</li>
+                            <li><i class="fas fa-check"></i> End of service benefits</li>
+                            <li><i class="fas fa-check"></i> Arabic support</li>
+                            <li><i class="fas fa-check"></i> Visa compliance</li>
+                        </ul>
+                    </div>
+                    <!-- Qatar -->
+                    <div class="region-card">
+                        <div class="region-icon">
+                            <img src="image/qatar-flag.png" alt="Qatar">
+                        </div>
+                        <h3>Qatar</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> WPS integration</li>
+                            <li><i class="fas fa-check"></i> Local labor laws</li>
+                            <li><i class="fas fa-check"></i> Custom structures</li>
+                            <li><i class="fas fa-check"></i> Statutory reporting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Integration & Automation Section -->
+        <section class="integration-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Seamless Integration & Automation</h2>
+                    <p>Connect with your existing systems and automate your payroll workflows.</p>
+                </div>
+                <div class="feature-split">
+                    <div class="feature-content">
+                        <div class="integration-features">
+                            <div class="integration-item">
+                                <i class="fas fa-plug"></i>
+                                <h3>Third-Party Integrations</h3>
+                                <p>Connect with popular ERP systems, accounting software, and banking platforms.</p>
+                            </div>
+                            <div class="integration-item">
+                                <i class="fas fa-robot"></i>
+                                <h3>Workflow Automation</h3>
+                                <p>Automate payroll runs, updates, and compliance checks.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-image">
+                        <img src="image/integration-dashboard.png" alt="Integration Dashboard">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics & Reporting Section -->
+        <section class="analytics-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Powerful Analytics & Reporting</h2>
+                    <p>Make data-driven decisions with comprehensive payroll insights.</p>
+                </div>
+                <div class="dashboard-preview">
+                    <img src="image/payroll-analytics.png" alt="Payroll Analytics Dashboard">
+                </div>
+                <div class="analytics-features">
+                    <div class="analytics-card">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Interactive Dashboards</h3>
+                        <p>Visual insights into payroll costs, trends, and compliance status.</p>
+                    </div>
+                    <div class="analytics-card">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Custom Reports</h3>
+                        <p>Generate detailed reports for audits and reviews.</p>
+                    </div>
+                    <div class="analytics-card">
+                        <i class="fas fa-brain"></i>
+                        <h3>AI-Powered Insights</h3>
+                        <p>Predictive analytics for better cost management.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security Section -->
+        <section class="security-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Enterprise-Grade Security</h2>
+                    <p>Your payroll data is protected with the highest security standards.</p>
+                </div>
+                <div class="security-features">
+                    <div class="security-card">
+                        <i class="fas fa-lock"></i>
+                        <h3>Data Protection</h3>
+                        <ul>
+                            <li>End-to-end encryption</li>
+                            <li>Secure data storage</li>
+                            <li>Regular backups</li>
+                        </ul>
+                    </div>
+                    <div class="security-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Compliance</h3>
+                        <ul>
+                            <li>GDPR compliance</li>
+                            <li>Regional data laws</li>
+                            <li>Industry standards</li>
+                        </ul>
+                    </div>
+                    <div class="security-card">
+                        <i class="fas fa-user-shield"></i>
+                        <h3>Access Control</h3>
+                        <ul>
+                            <li>Role-based access</li>
+                            <li>Multi-factor auth</li>
+                            <li>Audit trails</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Customer Success Stories</h2>
+                    <p>See how organizations are transforming their payroll operations.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"Workwise Pro has revolutionized our multi-country payroll processing. We've reduced processing time by 60%."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="image/testimonial1.webp" alt="HR Director">
+                            <div class="author-info">
+                                <h4>Sarah Johnson</h4>
+                                <p>HR Director, Global Tech Solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more testimonial cards as needed -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing-section" id="demo">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Simple, Transparent Pricing</h2>
+                    <p>Choose the plan that best fits your organization's needs.</p>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Starter</h3>
+                        <div class="price">$10<span>/employee/month</span></div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> Basic payroll processing</li>
+                            <li><i class="fas fa-check"></i> Single country support</li>
+                            <li><i class="fas fa-check"></i> Standard reports</li>
+                        </ul>
+                        <a href="#" class="btn primary">Get Started</a>
+                    </div>
+                    <!-- Add more pricing cards -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section class="resources-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Resources & Support</h2>
+                    <p>Everything you need to succeed with Workwise Pro Payroll.</p>
+                </div>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <i class="fas fa-book"></i>
+                        <h3>Documentation</h3>
+                        <p>Comprehensive guides and tutorials</p>
+                        <a href="#" class="learn-more">View Docs <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-video"></i>
+                        <h3>Video Tutorials</h3>
+                        <p>Step-by-step video guides</p>
+                        <a href="#" class="learn-more">Watch Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-headset"></i>
+                        <h3>24/7 Support</h3>
+                        <p>Expert help whenever you need it</p>
+                        <a href="#" class="learn-more">Contact Us <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#integrations">Integrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Developers</h4>
+                    <ul>
+                        <li><a href="#api-docs">API Documentation</a></li>
+                        <li><a href="#sdk">SDKs & Tools</a></li>
+                        <li><a href="#status">System Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Workwise Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="payrollscript.js"></script>
+</body>
+</html>

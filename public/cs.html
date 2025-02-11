@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - Workwise Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Root Variables */
+        :root {
+            --primary-color: #37B34A;
+            --text-dark: #1A1A1A;
+            --text-body: #333;
+            --background-light: #f5f5f5;
+            --blue-accent: #1E40AF;
+            --border-color: #e0e0e0;
+            --transition: all 0.3s ease;
+            --header-height: 80px;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            padding-top: var(--header-height);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: var(--header-height);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .logo h1 a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav {
+            margin-left: auto;
+            height: 100%;
+        }
+
+        #nav-list {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            height: 100%;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav-list > li {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        #nav-list > li > a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            padding: 0 12px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        #nav-list > li > a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Dropdown Styling */
+        .dropdown {
+            height: 100%;
+        }
+
+        .dropdown > a {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .dropdown > a i {
+            font-size: 12px;
+            margin-left: 4px;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            padding: 8px 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content li {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 8px 16px;
+            display: block;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: var(--background-light);
+            color: var(--primary-color);
+        }
+
+        /* Button Styles */
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .btn.primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn.primary:hover {
+            background: #2a8a38;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1002;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        /* Menu Overlay */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .menu-overlay.active {
+            display: block;
+        }
+
+        /* Coming Soon Section Styles */
+        .coming-soon {
+            flex: 1;
+            min-height: calc(100vh - var(--header-height));
+            background: linear-gradient(135deg, var(--background-light) 0%, #ffffff 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding: 0 2rem;
+        }
+
+        .title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .description {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-body);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease forwards 0.2s;
+            opacity: 0;
+        }
+
+        /* Countdown Styles */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease forwards 0.4s;
+            opacity: 0;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .label {
+            font-size: 0.9rem;
+            color: var(--text-body);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Notification Form */
+        .notification-form {
+            animation: fadeInUp 0.8s ease forwards 0.6s;
+            opacity: 0;
+        }
+
+        .notification-form p {
+            margin-bottom: 1rem;
+            color: var(--text-body);
+        }
+
+        .form-group {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .notify-btn {
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .notify-btn:hover {
+            transform: translateY(-2px);
+            background: #2a8a38;
+        }
+
+        /* Animated Elements */
+        .animated-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary-color);
+            top: -150px;
+            right: -150px;
+        }
+
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--blue-accent);
+            bottom: -100px;
+            left: -100px;
+            animation-delay: -2s;
+        }
+
+        .circle-3 {
+            width: 150px;
+            height: 150px;
+            background: var(--primary-color);
+            top: 50%;
+            right: 10%;
+            animation-delay: -4s;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 2rem;
+            color: var(--primary-color);
+            animation: floatIcon 8s ease-in-out infinite;
+        }
+
+        .floating-icon:nth-child(4) {
+            top: 20%;
+            left: 10%;
+            animation-delay: -2s;
+        }
+
+        .floating-icon:nth-child(5) {
+            top: 40%;
+            right: 15%;
+            animation-delay: -4s;
+        }
+
+        .floating-icon:nth-child(6) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: -6s;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes floatIcon {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(10px, -10px);
+            }
+            50% {
+                transform: translate(0, -20px);
+            }
+            75% {
+                transform: translate(-10px, -10px);
+            }
+        }
+
+        /* Mobile Responsive Styles */
+        @media screen and (max-width: 768px) {
+            header .container {
+                padding: 0 1rem;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            nav {
+                position: fixed;
+                top: var(--header-height);
+                right: -100%;
+                width: 85%;
+                height: calc(100vh - var(--header-height));
+                background: white;
+                transition: right 0.3s ease;
+                overflow-y: auto;
+                z-index: 1001;
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            #nav-list {
+                flex-direction: column;
+                gap: 0;
+                height: auto;
+                padding: 1rem 0;
+            }
+
+            #nav-list > li {
+                width: 100%;
+                height: auto;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            #nav-list > li > a {
+                padding: 1rem;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                display: none;
+                background: var(--background-light);
+            }
+
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+
+            .btn.primary {
+                width: 100%;
+                text-align: center;
+                margin-top: 1rem;
+            }
+
+            .coming-soon {
+                padding: 60px 0;
+            }
+
+            .countdown {
+                gap: 1rem;
+            }
+
+            .number {
+                font-size: 2rem;
+            }
+
+            .form-group {
+                flex-direction: column;
+                padding: 0 1rem;
+            }
+
+            .notify-btn {
+                width: 100%;
+            }
+
+            .floating-circle {
+                display: none;
+            }
+        }
+        /* Footer Styles */
+footer {
+    background: #1A1A1A;
+    color: white;
+    padding: 4rem 0 2rem;
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-section h4 {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.footer-section ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-section ul li a {
+    color: #999;
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 0.9rem;
+}
+
+.footer-section ul li a:hover {
+    color: white;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: #999;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    color: white;
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* Footer Responsive Styles */
+@media screen and (max-width: 768px) {
+    .footer-content {
+        padding: 0 1rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        margin-top: 2rem;
+        padding: 1.5rem 1rem 0;
+    }
+}
+
+/* Additional Footer Utility Classes */
+.footer-section.social {
+    margin-top: 1rem;
+}
+
+.footer-section.social h4 {
+    text-align: left;
+}
+
+@media screen and (max-width: 480px) {
+    footer {
+        padding: 3rem 0 1.5rem;
+    }
+
+    .footer-section h4 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-section ul li a {
+        font-size: 0.85rem;
+    }
+
+    .social-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .social-links a {
+        width: 36px;
+        height: 36px;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="https://workpro.onrender.com">Workwise Pro</a></h1>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="nav-menu">
+                <ul id="nav-list">
+                    <li><a href="features.html">Features</a></li>
+                    <li class="dropdown">
+                        <a href="#">HR/Accounts Modules <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="peoplemanagement.html">People Management</a></li>
+                            <li><a href="pms.html">Performance Management</a></li>
+                            <li><a href="payroll.html">Payroll Management</a></li>
+                            <li><a href="bookkeeping.html">Book-keeping</a></li>
+                            <li><a href="payint.html">Payroll Integration</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Business Operations <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="smartexpenses.html">SmartExpenses</a></li>
+                            <li><a href="shiftmaster.html">ShiftMaster</a></li>
+                            <li><a href="test.html">FlexHire - Coming Soon</a></li>
+                            <li><a href="stockflow.html">StockFlow</a></li>
+                            <li><a href="globalinvoice.html">GlobalInvoice</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="login.html">Sign In</a></li>
+                    <li><a href="signup.html" class="btn primary">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menu-overlay"></div>
+
+    <!-- Coming Soon Section -->
+    <section class="coming-soon">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="text-content animate-fade-in">
+                    <h1 class="title">Something Exciting<br>is Coming Soon</h1>
+                    <p class="description">We're working on something amazing. Stay tuned for a revolutionary way to manage your business operations.</p>
+                    
+                    <!-- Countdown Timer -->
+                    <div class="countdown">
+                        <div class="countdown-item">
+                            <span class="number" id="days">00</span>
+                            <span class="label">Days</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="number" id="hours">00</span>
+                            <span class="label">Hours</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="number" id="minutes">00</span>
+                            <span class="label">Minutes</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="number" id="seconds">00</span>
+                            <span class="label">Seconds</span>
+                        </div>
+                    </div>
+
+                    <!-- Notification Form -->
+                    <div class="notification-form">
+                        <p>Get notified when we launch</p>
+                        <div class="form-group">
+                            <input type="email" placeholder="Enter your email" class="email-input">
+                            <button class="notify-btn">Notify Me</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Animated Elements -->
+                <div class="animated-elements">
+                    <div class="floating-circle circle-1"></div>
+                    <div class="floating-circle circle-2"></div>
+                    <div class="floating-circle circle-3"></div>
+                    <div class="floating-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="floating-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <div class="floating-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Mobile App</a></li>
+                        <li><a href="#">Integrations</a></li>
+                        <li><a href="#">API Access</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#">Small Business</a></li>
+                        <li><a href="#">Enterprise</a></li>
+                        <li><a href="#">Accountants</a></li>
+                        <li><a href="#">Nonprofits</a></li>
+                        <li><a href="#">Startups</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Marketplace</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Workwise Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMobileMenu();
+            initializeCountdown();
+            initializeNotificationForm();
+        });
+
+        // Mobile Menu Functionality
+        function initializeMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navMenu = document.getElementById('nav-menu');
+            const menuOverlay = document.getElementById('menu-overlay');
+            const dropdowns = document.querySelectorAll('.dropdown');
+            let isMenuOpen = false;
+
+            // Toggle menu function
+            function toggleMenu(show) {
+                isMenuOpen = show;
+                mobileMenu.classList.toggle('active', show);
+                navMenu.classList.toggle('active', show);
+                menuOverlay.classList.toggle('active', show);
+                document.body.style.overflow = show ? 'hidden' : '';
+
+                // Reset dropdowns when closing menu
+                if (!show) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            }
+
+            // Mobile menu button click handler
+            mobileMenu.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleMenu(!isMenuOpen);
+            });
+
+            // Enhanced dropdown handling for mobile
+            dropdowns.forEach(dropdown => {
+                const link = dropdown.querySelector('a');
+                
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        // Close other dropdowns
+                        dropdowns.forEach(d => {
+                            if (d !== dropdown) {
+                                d.classList.remove('active');
+                            }
+                        });
+
+                        dropdown.classList.toggle('active');
+                    }
+                });
+            });
+
+            // Close menu when clicking overlay
+            menuOverlay.addEventListener('click', () => {
+                toggleMenu(false);
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (isMenuOpen && 
+                    !navMenu.contains(e.target) && 
+                    !mobileMenu.contains(e.target)) {
+                    toggleMenu(false);
+                }
+            });
+
+            // Handle escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && isMenuOpen) {
+                    toggleMenu(false);
+                }
+            });
+
+            // Handle window resize
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    if (window.innerWidth > 768 && isMenuOpen) {
+                        toggleMenu(false);
+                    }
+                }, 250);
+            });
+
+            // Touch event handling
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            document.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+
+            document.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const swipeDistance = touchEndX - touchStartX;
+
+                if (isMenuOpen && swipeDistance > swipeThreshold) {
+                    toggleMenu(false);
+                } else if (!isMenuOpen && swipeDistance < -swipeThreshold) {
+                    toggleMenu(true);
+                }
+            }
+        }
+
+        // Countdown Timer Functionality
+        function initializeCountdown() {
+            // Set the launch date to 30 days from now
+            const launchDate = new Date();
+            launchDate.setDate(launchDate.getDate() + 30);
+            launchDate.setHours(0, 0, 0, 0);
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = launchDate.getTime() - now;
+
+                // Calculate time units
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Update the countdown display
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+                // If countdown is finished
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById('days').textContent = '00';
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                }
+            }
+
+            // Update countdown immediately and then every second
+            updateCountdown();
+            const countdownInterval = setInterval(updateCountdown, 1000);
+        }
+
+        // Notification Form Functionality
+        function initializeNotificationForm() {
+            const notifyBtn = document.querySelector('.notify-btn');
+            const emailInput = document.querySelector('.email-input');
+
+            notifyBtn?.addEventListener('click', () => {
+                const email = emailInput.value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (email && emailRegex.test(email)) {
+                    // Success state
+                    notifyBtn.textContent = 'Thanks!';
+                    notifyBtn.style.backgroundColor = '#2a8a38';
+                    emailInput.value = '';
+                    emailInput.disabled = true;
+
+                    // Reset after 3 seconds
+                    setTimeout(() => {
+                        notifyBtn.textContent = 'Notify Me';
+                        notifyBtn.style.backgroundColor = '';
+                        emailInput.disabled = false;
+                    }, 3000);
+
+                    // Here you would typically send the email to your server
+                    console.log('Email submitted:', email);
+                } else {
+                    // Error state
+                    notifyBtn.textContent = 'Invalid Email';
+                    notifyBtn.style.backgroundColor = '#d42f2f';
+
+                    // Reset after 2 seconds
+                    setTimeout(() => {
+                        notifyBtn.textContent = 'Notify Me';
+                        notifyBtn.style.backgroundColor = '';
+                    }, 2000);
+                }
+            });
+
+            // Handle enter key in email input
+            emailInput?.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    notifyBtn.click();
+                }
+            });
+        }
+
+        // Prevent dropdown hover on touch devices
+        window.addEventListener('touchstart', function() {
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @media (hover: none) {
+                    .dropdown:hover .dropdown-content {
+                        opacity: 0;
+                        visibility: hidden;
+                    }
+                    .dropdown.active .dropdown-content {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }, { once: true });
+    </script>
+</body>
+</html>

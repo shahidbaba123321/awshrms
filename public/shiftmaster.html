@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShiftMaster - Employee Scheduling Software</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Root Variables */
+        :root {
+            --primary-color: #37B34A;
+            --text-dark: #1A1A1A;
+            --text-body: #333;
+            --background-light: #f5f5f5;
+            --blue-accent: #1E40AF;
+            --border-color: #e0e0e0;
+            --transition: all 0.3s ease;
+            --header-height: 80px;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            padding-top: var(--header-height);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: var(--header-height);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .logo h1 a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav {
+            margin-left: auto;
+            height: 100%;
+        }
+
+        #nav-list {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            height: 100%;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav-list > li {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        #nav-list > li > a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            padding: 0 12px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        #nav-list > li > a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Dropdown Styling */
+        .dropdown {
+            height: 100%;
+        }
+
+        .dropdown > a {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .dropdown > a i {
+            font-size: 12px;
+            margin-left: 4px;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            padding: 8px 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content li {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 8px 16px;
+            display: block;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: var(--background-light);
+            color: var(--primary-color);
+        }
+
+        /* Button Styles */
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .btn.primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn.primary:hover {
+            background: #2a8a38;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1002;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        /* Menu Overlay */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .menu-overlay.active {
+            display: block;
+        }
+
+        /* Mobile Responsive Styles */
+        @media screen and (max-width: 768px) {
+            header .container {
+                padding: 0 1rem;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            nav {
+                position: fixed;
+                top: var(--header-height);
+                right: -100%;
+                width: 85%;
+                height: calc(100vh - var(--header-height));
+                background: white;
+                transition: right 0.3s ease;
+                overflow-y: auto;
+                z-index: 1001;
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            #nav-list {
+                flex-direction: column;
+                gap: 0;
+                height: auto;
+                padding: 1rem 0;
+            }
+
+            #nav-list > li {
+                width: 100%;
+                height: auto;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            #nav-list > li > a {
+                padding: 1rem;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                display: none;
+                background: var(--background-light);
+            }
+
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+
+            .btn.primary {
+                width: 100%;
+                text-align: center;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="https://workpro.onrender.com">Workwise Pro</a></h1>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="nav-menu">
+                <ul id="nav-list">
+                    <li><a href="features.html">Features</a></li>
+                    <li class="dropdown">
+                        <a href="#">HR/Accounts Modules <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="peoplemanagement.html">People Management</a></li>
+                            <li><a href="pms.html">Performance Management</a></li>
+                            <li><a href="payroll.html">Payroll Management</a></li>
+                            <li><a href="bookkeeping.html">Book-keeping</a></li>
+                            <li><a href="payint.html">Payroll Integration</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Business Operations <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="smartexpenses.html">SmartExpenses</a></li>
+                            <li><a href="shiftmaster.html">ShiftMaster</a></li>
+                            <li><a href="cs.html">FlexHire - Coming Soon</a></li>
+                            <li><a href="stockflow.html">StockFlow</a></li>
+                            <li><a href="globalinvoice.html">GlobalInvoice</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="login.html">Sign In</a></li>
+                    <li><a href="signup.html" class="btn primary">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menu-overlay"></div>
+        <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-label">Shift scheduling software</div>
+                <h1 class="hero-title">
+                    Employee <span>scheduling</span><br>
+                    and time <span class="blue-text">tracking</span><br>
+                    made simple
+                    <div class="avatar-group">
+                        <img src="avatar1.jpg" alt="" class="avatar">
+                        <img src="avatar2.jpg" alt="" class="avatar">
+                        <img src="avatar3.jpg" alt="" class="avatar">
+                    </div>
+                </h1>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary">SIGN UP FOR FREE TRIAL</a>
+                    <a href="#" class="btn btn-secondary">REQUEST DEMO</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* Hero Section Styles */
+        .hero-section {
+            padding: 80px 0;
+            background: white;
+            position: relative;
+            overflow: hidden;
+            margin-top: var(--header-height);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-label {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+
+        .hero-title span {
+            color: var(--primary-color);
+        }
+
+        .hero-title .blue-text {
+            color: var(--blue-accent);
+        }
+
+        .avatar-group {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-left: -10px;
+        }
+
+        /* Feature Section Styles */
+        .section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-gray {
+            background: var(--background-light);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--background-light);
+            padding: 2rem;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-body);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Stats and Timesheet Cards */
+        .stat-card, .timesheet-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-top: auto;
+        }
+
+        .stat-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+
+        .stat-table td {
+            padding: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .employee-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .timesheet-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .time-row, .total-row, .pay-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Info Grid Section */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .info-card.blue {
+            background: var(--blue-accent);
+            color: white;
+        }
+
+        .info-card.black {
+            background: black;
+            color: white;
+        }
+
+        .info-card.green {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .pricing-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: var(--primary-color);
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 3rem auto;
+        }
+
+        .pricing-card {
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card.basic {
+            background: black;
+            color: white;
+        }
+
+        .pricing-card.standard {
+            background: var(--primary-color);
+            color: white;
+            position: relative;
+        }
+
+        .best-deal-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #CD853F;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 1024px) {
+            .feature-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .hero-section {
+                padding: 60px 0;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-container {
+                padding: 0 1rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card,
+            .info-card,
+            .pricing-card {
+                padding: 1.5rem;
+            }
+
+            .timesheet-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-label {
+                font-size: 1rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+        <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Mobile App</a></li>
+                        <li><a href="#">Integrations</a></li>
+                        <li><a href="#">API Access</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#">Small Business</a></li>
+                        <li><a href="#">Enterprise</a></li>
+                        <li><a href="#">Accountants</a></li>
+                        <li><a href="#">Nonprofits</a></li>
+                        <li><a href="#">Startups</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Marketplace</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ShiftMaster. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Footer Styles */
+        footer {
+            background: #1A1A1A;
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section ul li a {
+            color: #999;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: #999;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: white;
+            border-color: white;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        @media screen and (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 1rem;
+            }
+
+            .footer-content {
+                padding: 0 1rem;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navMenu = document.getElementById('nav-menu');
+            const menuOverlay = document.getElementById('menu-overlay');
+            const dropdowns = document.querySelectorAll('.dropdown');
+            let isMenuOpen = false;
+
+            // Toggle menu function
+            function toggleMenu(show) {
+                isMenuOpen = show;
+                mobileMenu.classList.toggle('active', show);
+                navMenu.classList.toggle('active', show);
+                menuOverlay.classList.toggle('active', show);
+                document.body.style.overflow = show ? 'hidden' : '';
+
+                // Reset dropdowns when closing menu
+                if (!show) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            }
+
+            // Mobile menu button click handler
+            mobileMenu.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleMenu(!isMenuOpen);
+            });
+
+            // Enhanced dropdown handling for mobile
+            dropdowns.forEach(dropdown => {
+                const link = dropdown.querySelector('a');
+                
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        // Close other dropdowns
+                        dropdowns.forEach(d => {
+                            if (d !== dropdown) {
+                                d.classList.remove('active');
+                            }
+                        });
+
+                        dropdown.classList.toggle('active');
+                    }
+                });
+            });
+
+            // Close menu when clicking overlay
+            menuOverlay.addEventListener('click', () => {
+                toggleMenu(false);
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (isMenuOpen && 
+                    !navMenu.contains(e.target) && 
+                    !mobileMenu.contains(e.target)) {
+                    toggleMenu(false);
+                }
+            });
+
+            // Handle escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && isMenuOpen) {
+                    toggleMenu(false);
+                }
+            });
+
+            // Handle window resize
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    if (window.innerWidth > 768 && isMenuOpen) {
+                        toggleMenu(false);
+                    }
+                }, 250);
+            });
+
+            // Touch event handling
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            document.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+
+            document.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const swipeDistance = touchEndX - touchStartX;
+
+                if (isMenuOpen && swipeDistance > swipeThreshold) {
+                    toggleMenu(false);
+                } else if (!isMenuOpen && swipeDistance < -swipeThreshold) {
+                    toggleMenu(true);
+                }
+            }
+        });
+
+        // Prevent dropdown hover on touch devices
+        window.addEventListener('touchstart', function() {
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @media (hover: none) {
+                    .dropdown:hover .dropdown-content {
+                        opacity: 0;
+                        visibility: hidden;
+                    }
+                    .dropdown.active .dropdown-content {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }, { once: true });
+
+        // Initialize pricing toggle if it exists
+        const pricingToggle = document.getElementById('pricingToggle');
+        if (pricingToggle) {
+            let isYearly = false;
+            pricingToggle.addEventListener('click', () => {
+                isYearly = !isYearly;
+                pricingToggle.classList.toggle('active', isYearly);
+                // Add your price update logic here
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll Integration - Workwise Pro</title>
+    <link rel="stylesheet" href="payintstyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay"></div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="https://workpro.onrender.com">Workwise Pro</a></h1>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="nav-menu">
+                <ul id="nav-list">
+                    <li><a href="features.html">Features</a></li>
+                    <li class="dropdown">
+                        <a href="#">HR/Accounts Modules <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="peoplemanagement.html">People Management</a></li>
+                            <li><a href="pms.html">Performance Management</a></li>
+                            <li><a href="payroll.html">Payroll</a></li>
+                            <li><a href="bookkeeping.html">Book-keeping</a></li>
+                            <li><a href="payint.html">Payroll Integration</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Business Operations <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="smartexpenses.html">SmartExpenses</a></li>
+                            <li><a href="shiftmaster.html">ShiftMaster</a></li>
+                            <li><a href="cs.html">FlexHire - Coming Soon</a></li>
+                            <li><a href="stockflow.html">StockFlow</a></li>
+                            <li><a href="globalinvoice.html">GlobalInvoice</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="login.html">Sign In</a></li>
+                    <li><a href="signup.html" class="btn primary">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="payint-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Seamless Payroll Integration</h1>
+                    <h2>for Streamlined HR Operations</h2>
+                    <p>Integrate your payroll seamlessly with our HRMS to ensure accuracy, compliance, and real-time insights.</p>
+                    <div class="hero-cta">
+                        <a href="#demo" class="btn primary">Request Demo</a>
+                        <a href="#features" class="btn secondary">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="image/payroll-integration.webp" alt="Payroll Integration">
+                    <div class="feature-highlights">
+                        <span class="highlight"><i class="fas fa-sync"></i> Real-time Sync</span>
+                        <span class="highlight"><i class="fas fa-shield-alt"></i> Secure Integration</span>
+                        <span class="highlight"><i class="fas fa-chart-line"></i> Live Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overview Section -->
+        <section class="overview-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Streamline Your Payroll Operations</h2>
+                    <p>Eliminate data silos and reduce manual errors with our comprehensive payroll integration solution.</p>
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <i class="fas fa-sync-alt"></i>
+                        <h3>Real-time Sync</h3>
+                        <p>Automated synchronization of employee data, attendance, and salary details.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-robot"></i>
+                        <h3>Automated Processing</h3>
+                        <p>Reduce manual intervention with automated payroll calculations and updates.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Enhanced Compliance</h3>
+                        <p>Stay compliant with automated regulatory updates and checks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Integration Features Section -->
+        <section class="features-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Core Integration Features</h2>
+                    <p>Everything you need for seamless payroll integration and management.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h3>Data Synchronization</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Automated data sync</li>
+                            <li><i class="fas fa-check"></i> Real-time updates</li>
+                            <li><i class="fas fa-check"></i> Error notifications</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h3>API Connectivity</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Robust APIs</li>
+                            <li><i class="fas fa-check"></i> Third-party integration</li>
+                            <li><i class="fas fa-check"></i> Secure data transfer</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Custom Workflows</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Configurable processes</li>
+                            <li><i class="fas fa-check"></i> Policy alignment</li>
+                            <li><i class="fas fa-check"></i> Flexible cycles</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workflow & Automation Section -->
+        <section class="workflow-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Intelligent Workflow Automation</h2>
+                    <p>Automate your payroll processes and reduce administrative overhead.</p>
+                </div>
+                <div class="feature-split">
+                    <div class="feature-content">
+                        <div class="workflow-features">
+                            <div class="workflow-item">
+                                <i class="fas fa-clock"></i>
+                                <h3>Automated Processing</h3>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Automated payroll runs</li>
+                                    <li><i class="fas fa-check"></i> Deduction calculations</li>
+                                    <li><i class="fas fa-check"></i> Bonus processing</li>
+                                </ul>
+                            </div>
+                            <div class="workflow-item">
+                                <i class="fas fa-tasks"></i>
+                                <h3>Streamlined Approvals</h3>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Multi-level approvals</li>
+                                    <li><i class="fas fa-check"></i> Quick adjustments</li>
+                                    <li><i class="fas fa-check"></i> Error handling</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-image">
+                        <div class="dashboard-preview">
+                            <img src="image/workflow-automation.webp" alt="Workflow Automation Dashboard">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics & Reporting Section -->
+        <section class="analytics-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Powerful Analytics & Reporting</h2>
+                    <p>Make data-driven decisions with comprehensive payroll insights.</p>
+                </div>
+                <div class="dashboard-preview">
+                    <img src="image/payroll-analytics.webp" alt="Payroll Analytics Dashboard">
+                </div>
+                <div class="analytics-features">
+                    <div class="analytics-card">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Interactive Dashboards</h3>
+                        <p>Customizable dashboards with real-time payroll metrics and insights.</p>
+                    </div>
+                    <div class="analytics-card">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Custom Reports</h3>
+                        <p>Generate detailed reports for audits and financial analysis.</p>
+                    </div>
+                    <div class="analytics-card">
+                        <i class="fas fa-brain"></i>
+                        <h3>Predictive Analytics</h3>
+                        <p>AI-driven insights for payroll forecasting and optimization.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security & Compliance Section -->
+        <section class="security-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Enterprise-Grade Security</h2>
+                    <p>Your payroll data is protected with the highest security standards.</p>
+                </div>
+                <div class="security-features">
+                    <div class="security-card">
+                        <i class="fas fa-lock"></i>
+                        <h3>Data Protection</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> End-to-end encryption</li>
+                            <li><i class="fas fa-check"></i> Secure storage</li>
+                            <li><i class="fas fa-check"></i> Regular backups</li>
+                        </ul>
+                    </div>
+                    <div class="security-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Compliance</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Regulatory updates</li>
+                            <li><i class="fas fa-check"></i> Tax compliance</li>
+                            <li><i class="fas fa-check"></i> Audit readiness</li>
+                        </ul>
+                    </div>
+                    <div class="security-card">
+                        <i class="fas fa-user-shield"></i>
+                        <h3>Access Control</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Role-based access</li>
+                            <li><i class="fas fa-check"></i> Multi-factor auth</li>
+                            <li><i class="fas fa-check"></i> Activity logging</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer Success Section -->
+        <section class="testimonials-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Customer Success Stories</h2>
+                    <p>See how organizations are transforming their payroll operations.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"The payroll integration has reduced our processing time by 75% and eliminated manual errors. It's been a game-changer for our HR team."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="image/testimonial1.webp" alt="Finance Director">
+                            <div class="author-info">
+                                <h4>David Chen</h4>
+                                <p>Finance Director, Global Tech Solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"The automated compliance updates and real-time synchronization have made our payroll process seamless and error-free."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="image/testimonial2.webp" alt="HR Manager">
+                            <div class="author-info">
+                                <h4>Sarah Thompson</h4>
+                                <p>HR Manager, Innovation Corp</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing-section" id="demo">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Simple, Transparent Pricing</h2>
+                    <p>Choose the plan that best fits your organization's needs.</p>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Starter</h3>
+                        <div class="price">$39<span>/month</span></div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> Basic integration</li>
+                            <li><i class="fas fa-check"></i> Standard reports</li>
+                            <li><i class="fas fa-check"></i> Email support</li>
+                        </ul>
+                        <a href="#" class="btn primary">Get Started</a>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3>Professional</h3>
+                        <div class="price">$89<span>/month</span></div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> Advanced integration</li>
+                            <li><i class="fas fa-check"></i> Custom reports</li>
+                            <li><i class="fas fa-check"></i> Priority support</li>
+                            <li><i class="fas fa-check"></i> API access</li>
+                        </ul>
+                        <a href="#" class="btn primary">Get Started</a>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Enterprise</h3>
+                        <div class="price">Custom</div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> Full integration suite</li>
+                            <li><i class="fas fa-check"></i> Custom solutions</li>
+                            <li><i class="fas fa-check"></i> 24/7 support</li>
+                            <li><i class="fas fa-check"></i> Dedicated manager</li>
+                        </ul>
+                        <a href="#" class="btn primary">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section class="resources-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Resources & Support</h2>
+                    <p>Everything you need to succeed with Workwise Pro Payroll Integration.</p>
+                </div>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <i class="fas fa-book"></i>
+                        <h3>Documentation</h3>
+                        <p>Comprehensive guides and tutorials</p>
+                        <a href="#" class="learn-more">View Docs <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-video"></i>
+                        <h3>Video Tutorials</h3>
+                        <p>Step-by-step video guides</p>
+                        <a href="#" class="learn-more">Watch Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-headset"></i>
+                        <h3>24/7 Support</h3>
+                        <p>Expert help whenever you need it</p>
+                        <a href="#" class="learn-more">Contact Us <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#integrations">Integrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Developers</h4>
+                    <ul>
+                        <li><a href="#api-docs">API Documentation</a></li>
+                        <li><a href="#sdk">SDKs & Tools</a></li>
+                        <li><a href="#status">System Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Workwise Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="payintscript.js"></script>
+</body>
+</html>

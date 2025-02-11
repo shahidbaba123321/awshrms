@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Component</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Root Variables */
+        :root {
+            --primary-color: #e33333;
+            --text-dark: #0f1964;
+            --text-body: #333;
+            --background-light: #fff6f4;
+            --link-blue: #2962ff;
+            --border-color: #e0e0e0;
+            --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --header-height: 70px;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-body);
+            padding-top: var(--header-height);
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: var(--header-height);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        /* Main Navigation */
+        .main-nav {
+            margin-left: auto;
+            height: 100%;
+        }
+
+        .nav-list {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            height: 100%;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-list > li {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-list > li > a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            padding: 0 12px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .nav-list > li > a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Dropdown Styling */
+        .dropdown {
+            height: 100%;
+        }
+
+        .dropdown > a {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .dropdown > a::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid currentColor;
+            border-bottom: 2px solid currentColor;
+            transform: rotate(45deg) translateY(-2px);
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            padding: 8px 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content li {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 8px 16px;
+            display: block;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: var(--background-light);
+            color: var(--primary-color);
+        }
+
+        /* Auth Buttons */
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-left: 1.5rem;
+        }
+
+        .sign-in {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .sign-up {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: background 0.3s ease;
+        }
+
+        .sign-up:hover {
+            background: #d42f2f;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile Styles */
+        @media screen and (max-width: 768px) {
+            header .container {
+                padding: 0 1rem;
+            }
+
+            .menu-toggle {
+                display: flex;
+                z-index: 1002;
+            }
+
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            .main-nav {
+                position: fixed;
+                top: var(--header-height);
+                right: -100%;
+                width: 85%;
+                height: calc(100vh - var(--header-height));
+                background: white;
+                transition: right 0.3s ease;
+                overflow-y: auto;
+                z-index: 1001;
+            }
+
+            .main-nav.active {
+                right: 0;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                gap: 0;
+                height: auto;
+                padding: 1rem 0;
+            }
+
+            .nav-list > li {
+                width: 100%;
+                height: auto;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-list > li > a {
+                padding: 1rem;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                display: none;
+                background: var(--background-light);
+            }
+
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+
+            .auth-buttons {
+                flex-direction: column;
+                margin: 1rem;
+                gap: 0.5rem;
+                border-bottom: none !important;
+            }
+
+            .sign-in, .sign-up {
+                width: 100%;
+                text-align: center;
+                padding: 0.75rem;
+            }
+        }
+
+        /* Menu Overlay */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .menu-overlay.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">
+                <h1>Workwise Pro</h1>
+            </a>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav class="main-nav" id="main-nav">
+                <ul class="nav-list">
+                    <li><a href="features.html">Features</a></li>
+                    <li class="dropdown">
+                        <a href="#">HR/Accounts Modules <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="peoplemanagement.html">People Management</a></li>
+                            <li><a href="pms.html">Performance Management</a></li>
+                            <li><a href="payroll.html">Payroll Management</a></li>
+                            <li><a href="bookkeeping.html">Book-keeping</a></li>
+                            <li><a href="payint.html">Payroll Integration</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Business Operations <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="smartexpenses.html">SmartExpenses</a></li>
+                            <li><a href="shiftmaster.html">ShiftMaster</a></li>
+                            <li><a href="cs.html">FlexHire - Coming Soon</a></li>
+                            <li><a href="stockflow.html">StockFlow</a></li>
+                            <li><a href="globalinvoice.html">GlobalInvoice</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <div class="auth-buttons">
+                        <a href="/login" class="sign-in">Sign In</a>
+                        <a href="/signup" class="sign-up">Sign Up</a>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="menu-overlay" id="menu-overlay"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMobileMenu();
+        });
+
+        function initializeMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mainNav = document.getElementById('main-nav');
+            const menuOverlay = document.getElementById('menu-overlay');
+            const dropdowns = document.querySelectorAll('.dropdown');
+            let isMenuOpen = false;
+
+            // Toggle menu function
+            function toggleMenu(show) {
+                isMenuOpen = show;
+                mobileMenu.classList.toggle('active', show);
+                mainNav.classList.toggle('active', show);
+                menuOverlay.classList.toggle('active', show);
+                document.body.style.overflow = show ? 'hidden' : '';
+
+                // Reset dropdowns when closing menu
+                if (!show) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            }
+
+            // Mobile menu button click handler
+            mobileMenu.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleMenu(!isMenuOpen);
+            });
+
+            // Enhanced dropdown handling for mobile
+            dropdowns.forEach(dropdown => {
+                const link = dropdown.querySelector('a');
+                
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        // Close other dropdowns
+                        dropdowns.forEach(d => {
+                            if (d !== dropdown) {
+                                d.classList.remove('active');
+                            }
+                        });
+
+                        dropdown.classList.toggle('active');
+                    }
+                });
+            });
+
+            // Close menu when clicking overlay
+            menuOverlay.addEventListener('click', () => {
+                toggleMenu(false);
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (isMenuOpen && 
+                    !mainNav.contains(e.target) && 
+                    !mobileMenu.contains(e.target)) {
+                    toggleMenu(false);
+                }
+            });
+
+            // Handle escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && isMenuOpen) {
+                    toggleMenu(false);
+                }
+            });
+
+            // Handle window resize
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    if (window.innerWidth > 768 && isMenuOpen) {
+                        toggleMenu(false);
+                    }
+                }, 250);
+            });
+
+            // Touch event handling
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            document.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+
+            document.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const swipeDistance = touchEndX - touchStartX;
+
+                if (isMenuOpen && swipeDistance > swipeThreshold) {
+                    // Swipe right - close menu
+                    toggleMenu(false);
+                } else if (!isMenuOpen && swipeDistance < -swipeThreshold) {
+                    // Swipe left - open menu
+                    toggleMenu(true);
+                }
+            }
+        }
+
+        // Prevent dropdown hover on touch devices
+        window.addEventListener('touchstart', function() {
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @media (hover: none) {
+                    .dropdown:hover .dropdown-content {
+                        opacity: 0;
+                        visibility: hidden;
+                    }
+                    .dropdown.active .dropdown-content {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }, { once: true });
+    </script>
+</body>
+</html>

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Management - Workwise Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Root Variables */
+        :root {
+            --primary-color: #e33333;
+            --text-dark: #0f1964;
+            --text-body: #333;
+            --background-light: #fff6f4;
+            --link-blue: #2962ff;
+            --border-color: #e0e0e0;
+            --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --header-height: 70px;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-body);
+            background-color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: var(--header-height);
+            margin: 0;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(to right, #fff6f4, #fff);
+            padding: calc(var(--header-height) + 2rem) 0 4rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .hero-content h2 {
+            color: var(--text-dark);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            color: var(--text-body);
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        @media screen and (max-width: 768px) {
+            .hero-buttons {
+                flex-direction: column;
+                padding: 0 2rem;
+            }
+
+            .hero-content h2 {
+                font-size: 2rem;
+                padding: 0 1rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #d42f2f;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-dark);
+            border: 1px solid var(--text-dark);
+        }
+
+        .btn-secondary:hover {
+            background: var(--background-light);
+        }
+
+        @media screen and (max-width: 768px) {
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* Content Styling */
+        .main-content {
+            padding: 2rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-section {
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .feature-section h2 {
+            color: var(--text-dark);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .feature-section > p {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--background-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon i {
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+
+        .feature-card h3 {
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: var(--text-body);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .learn-more {
+            color: var(--link-blue);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .learn-more i {
+            transition: transform 0.3s ease;
+        }
+
+        .learn-more:hover i {
+            transform: translateX(5px);
+        }
+
+        @media screen and (max-width: 768px) {
+            .feature-section {
+                padding: 2rem 0;
+            }
+
+            .feature-section h2 {
+                font-size: 2rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h2>Expense software loaded with powerful features</h2>
+            <p>With its comprehensive set of features for all stages of your expense reporting, Workwise Pro is your go-to expense software.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">TRY NOW</a>
+                <a href="#" class="btn btn-secondary">REQUEST A DEMO</a>
+            </div>
+        </div>
+    </section>
+        <!-- Main Content -->
+    <main>
+        <div class="main-content">
+            <!-- Receipts and Expenses Section -->
+            <section id="receipts" class="feature-section scroll-reveal" data-section="receipts">
+                <h2>Receipts and expenses</h2>
+                <p>Automate your receipt and expense management with the help of robust features that free up time for other important tasks.</p>
+                <div class="feature-grid">
+                    <div class="feature-card animate-fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-receipt" aria-hidden="true"></i>
+                        </div>
+                        <h3>Receipt management</h3>
+                        <p>Auto-scan receipts, track and store them digitally, and forward them from your email.</p>
+                        <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+
+                    <div class="feature-card animate-fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-dollar-sign" aria-hidden="true"></i>
+                        </div>
+                        <h3>Expense management</h3>
+                        <p>Enable different kinds of expenses—multicurrency, per diem, billable and non-billable—and automate expense creation.</p>
+                        <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+
+                    <div class="feature-card animate-fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-route" aria-hidden="true"></i>
+                        </div>
+                        <h3>Mileage tracking</h3>
+                        <p>Track mileage using any of four different methods.</p>
+                        <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cards Section -->
+            <section id="cards" class="feature-section scroll-reveal" data-section="cards">
+                <h2>Corporate Cards</h2>
+                <p>Streamline your corporate card expense management with automated reconciliation and real-time tracking.</p>
+                <div class="feature-grid">
+                    <div class="feature-card animate-fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-credit-card" aria-hidden="true"></i>
+                        </div>
+                        <h3>Card Management</h3>
+                        <p>Manage multiple corporate cards and automate expense creation from card transactions.</p>
+                        <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+
+                    <div class="feature-card animate-fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-sync-alt" aria-hidden="true"></i>
+                        </div>
+                        <h3>Auto Reconciliation</h3>
+                        <p>Automatically match card transactions with expenses and receipts.</p>
+                        <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reports Section -->
+            <section id="reports" class="feature-section scroll-reveal" data-section="reports">
+                <h2>Expense Reports</h2>
+                <p>Generate comprehensive expense reports with detailed analytics and insights.</p>
+                <div class="feature-grid">
+                    <div class="feature-card animate-fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-alt" aria-hidden="true"></i>
+                        </div>
+                        <h3>Report Generation</h3>
+                        <p>Create detailed expense reports with customizable templates and formats.</p>
+                        <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+
+                    <div class="feature-card animate-fade-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-bar" aria-hidden="true"></i>
+                        </div>
+                        <h3>Analytics Dashboard</h3>
+                        <p>View expense trends and patterns with interactive charts and graphs.</p>
+                        <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Integrations</a></li>
+                        <li><a href="#">Mobile Apps</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#">Small Business</a></li>
+                        <li><a href="#">Enterprise</a></li>
+                        <li><a href="#">Accountants</a></li>
+                        <li><a href="#">Nonprofits</a></li>
+                        <li><a href="#">Startups</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Marketplace</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Workwise Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Footer Styles */
+        footer {
+            background: #2d3436;
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-section h4 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: #a0a0a0;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #a0a0a0;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #a0a0a0;
+            text-decoration: none;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-links a:hover {
+            color: white;
+            border-color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Footer Responsive Styles */
+        @media screen and (max-width: 768px) {
+            footer {
+                padding: 2rem 0 1rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .footer-content {
+                padding: 0 1rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+       <script>
+    // Component Loading Function
+    async function loadComponent(url, targetElementId) {
+        console.log(`Attempting to load component from ${url} into ${targetElementId}`);
+        try {
+            // Check if target element exists
+            const targetElement = document.getElementById(targetElementId);
+            if (!targetElement) {
+                throw new Error(`Target element ${targetElementId} not found`);
+            }
+
+            // Fetch the component
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
+            }
+
+            const html = await response.text();
+            console.log(`Content fetched from ${url}, length: ${html.length}`);
+
+            // Parse the HTML
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+
+            // Handle styles
+            const styles = doc.getElementsByTagName('style');
+            Array.from(styles).forEach(style => {
+                const styleId = `style-${targetElementId}`;
+                if (!document.getElementById(styleId)) {
+                    style.id = styleId;
+                    document.head.appendChild(style.cloneNode(true));
+                }
+            });
+
+            // Handle content
+            const content = doc.body.firstElementChild;
+            if (!content) {
+                throw new Error(`No content found in ${url}`);
+            }
+
+            // Clear and append content
+            targetElement.innerHTML = '';
+            targetElement.appendChild(content.cloneNode(true));
+
+            // Handle scripts
+            const scripts = doc.getElementsByTagName('script');
+            for (const script of scripts) {
+                const newScript = document.createElement('script');
+                Array.from(script.attributes).forEach(attr => {
+                    newScript.setAttribute(attr.name, attr.value);
+                });
+                newScript.textContent = script.textContent;
+                document.body.appendChild(newScript);
+            }
+
+            console.log(`Successfully loaded ${url} into ${targetElementId}`);
+            return true;
+
+        } catch (error) {
+            console.error(`Error loading ${url}:`, error);
+            const targetElement = document.getElementById(targetElementId);
+            if (targetElement) {
+                targetElement.innerHTML = `
+                    <div style="color: red; padding: 20px; text-align: center; background: #fff1f1; border: 1px solid #ffcdd2;">
+                        Failed to load ${url.split('/').pop()}
+                        <br>
+                        ${error.message}
+                    </div>`;
+            }
+            return false;
+        }
+    }
+
+    // Load components sequentially
+    async function loadComponents() {
+        try {
+            console.log('Starting component loading sequence');
+
+            // Load header first
+            const headerLoaded = await loadComponent('header.html', 'header-container');
+            if (headerLoaded) {
+                console.log('Header loaded successfully');
+                if (typeof initializeMobileMenu === 'function') {
+                    initializeMobileMenu();
+                }
+            }
+
+            // Load footer immediately after header
+            const footerLoaded = await loadComponent('footer.html', 'footer-container');
+            if (footerLoaded) {
+                console.log('Footer loaded successfully');
+            }
+
+        } catch (error) {
+            console.error('Error in loading sequence:', error);
+        }
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadComponents);
+    } else {
+        loadComponents();
+    }
+
+    // Error handling
+    window.onerror = function(msg, url, lineNo, columnNo, error) {
+        console.error('Global error:', { message: msg, url, lineNo, columnNo, error });
+        return false;
+    };
+
+    window.addEventListener('unhandledrejection', event => {
+        console.error('Unhandled promise rejection:', event.reason);
+    });
+</script>
+</body>
+</html>

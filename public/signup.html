@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Workwise Pro</title>
+    <link rel="stylesheet" href="logstyles.css">
+</head>
+<body>
+    <!-- Signup Page -->
+    <section class="signup">
+        <div class="container">
+            <h2>Sign Up</h2>
+            <form id="signup-form">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <select id="role">
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                    <option value="user">Super Admin</option>
+                </select>
+                <button type="submit" class="btn primary">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="login.html">Login</a></p>
+        </div>
+    </section>
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const role = document.getElementById('role').value;
+
+            const response = await fetch('/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password, role })
+            });
+
+            if (response.ok) {
+                alert('User registered successfully!');
+                window.location.href = 'login.html';
+            } else {
+                alert('Registration failed. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

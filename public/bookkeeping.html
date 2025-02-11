@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book-keeping Solution - Workwise Pro</title>
+    <link rel="stylesheet" href="bookkeepingstyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay"></div>
+
+    <!-- Header Section [Same as Baba theme] -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="https://workpro.onrender.com">Workwise Pro</a></h1>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="nav-menu">
+                <ul id="nav-list">
+                    <li><a href="features.html">Features</a></li>
+                    <li class="dropdown">
+                        <a href="#">HR/Accounts Modules <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="peoplemanagement.html">People Management</a></li>
+                            <li><a href="pms.html">Performance Management</a></li>
+                           <li><a href="payroll.html">Payroll Management</a></li>
+                            <li><a href="bookkeeping.html">Book-keeping</a></li>
+                            <li><a href="payint.html">Payroll Integration</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Business Operations <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="smartexpenses.html">SmartExpenses</a></li>
+                            <li><a href="shiftmaster.html">ShiftMaster</a></li>
+                            <li><a href="cs.html">FlexHire - Coming Soon</a></li>
+                            <li><a href="stockflow.html">StockFlow</a></li>
+                            <li><a href="globalinvoice.html">GlobalInvoice</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="login.html">Sign In</a></li>
+                    <li><a href="signup.html" class="btn primary">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="bookkeeping-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Transform Your Financial Management</h1>
+                    <h2>Integrated HRMS Book-keeping Solution</h2>
+                    <p>Automate, reconcile, and report all your financial transactions seamlessly.</p>
+                    <div class="hero-cta">
+                        <a href="#demo" class="btn primary">Request Demo</a>
+                        <a href="#features" class="btn secondary">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="image/bookkeeping-dashboard.png" alt="Financial Dashboard">
+                    <div class="feature-highlights">
+                        <span class="highlight"><i class="fas fa-chart-line"></i> Real-time Analytics</span>
+                        <span class="highlight"><i class="fas fa-sync"></i> Auto Reconciliation</span>
+                        <span class="highlight"><i class="fas fa-shield-alt"></i> Secure Transactions</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overview Section -->
+        <section class="overview-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Streamline Your Financial Operations</h2>
+                    <p>Centralize your financial transactions, ensure accuracy, and maintain compliance with our comprehensive book-keeping solution.</p>
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <i class="fas fa-rocket"></i>
+                        <h3>Enhanced Efficiency</h3>
+                        <p>Automate routine tasks and reduce manual data entry by up to 80%.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Improved Accuracy</h3>
+                        <p>Minimize errors with automated calculations and reconciliation.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Enhanced Compliance</h3>
+                        <p>Stay compliant with built-in regulatory checks and updates.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Features Section -->
+        <section class="key-features" id="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Comprehensive Book-keeping Features</h2>
+                    <p>Everything you need to manage your financial operations effectively.</p>
+                </div>
+                <div class="features-grid">
+                    <!-- General Ledger -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>General Ledger</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Automated journal entries</li>
+                            <li><i class="fas fa-check"></i> Centralized access</li>
+                            <li><i class="fas fa-check"></i> Real-time updates</li>
+                        </ul>
+                    </div>
+                    <!-- Accounts Management -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <h3>Accounts Management</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Payables & Receivables</li>
+                            <li><i class="fas fa-check"></i> Invoice tracking</li>
+                            <li><i class="fas fa-check"></i> Payment processing</li>
+                        </ul>
+                    </div>
+                    <!-- Bank Reconciliation -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3>Bank Reconciliation</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Automated matching</li>
+                            <li><i class="fas fa-check"></i> Statement import</li>
+                            <li><i class="fas fa-check"></i> Error detection</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Integration & Automation Section -->
+        <section class="integration-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Seamless Integration & Automation</h2>
+                    <p>Connect with your existing systems and automate your financial workflows.</p>
+                </div>
+                <div class="feature-split">
+                    <div class="feature-content">
+                        <div class="integration-features">
+                            <div class="integration-item">
+                                <i class="fas fa-plug"></i>
+                                <h3>System Integration</h3>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> QuickBooks integration</li>
+                                    <li><i class="fas fa-check"></i> Xero compatibility</li>
+                                    <li><i class="fas fa-check"></i> API connectivity</li>
+                                </ul>
+                            </div>
+                            <div class="integration-item">
+                                <i class="fas fa-robot"></i>
+                                <h3>Workflow Automation</h3>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Automated data entry</li>
+                                    <li><i class="fas fa-check"></i> Smart reconciliation</li>
+                                    <li><i class="fas fa-check"></i> Real-time sync</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feature-image">
+                        <div class="dashboard-preview">
+                            <img src="image/bkintegration-dashboard.png" alt="Integration Dashboard">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics & Reporting Section -->
+        <section class="analytics-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Powerful Analytics & Reporting</h2>
+                    <p>Make data-driven financial decisions with comprehensive insights and reports.</p>
+                </div>
+                <div class="dashboard-preview">
+                    <img src="image/bkfinancial-analytics.png" alt="Financial Analytics Dashboard">
+                </div>
+                <div class="analytics-features">
+                    <div class="analytics-card">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Interactive Dashboards</h3>
+                        <p>Visualize financial data with customizable charts and real-time metrics.</p>
+                    </div>
+                    <div class="analytics-card">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Custom Reports</h3>
+                        <p>Generate detailed financial statements and custom reports.</p>
+                    </div>
+                    <div class="analytics-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Trend Analysis</h3>
+                        <p>Track financial trends and forecast future performance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security Section -->
+        <section class="security-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Enterprise-Grade Security</h2>
+                    <p>Your financial data is protected with the highest security standards.</p>
+                </div>
+                <div class="security-features">
+                    <div class="security-card">
+                        <i class="fas fa-lock"></i>
+                        <h3>Data Protection</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> End-to-end encryption</li>
+                            <li><i class="fas fa-check"></i> Secure data storage</li>
+                            <li><i class="fas fa-check"></i> Regular backups</li>
+                        </ul>
+                    </div>
+                    <div class="security-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Compliance</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Financial regulations</li>
+                            <li><i class="fas fa-check"></i> Tax law compliance</li>
+                            <li><i class="fas fa-check"></i> Audit readiness</li>
+                        </ul>
+                    </div>
+                    <div class="security-card">
+                        <i class="fas fa-user-shield"></i>
+                        <h3>Access Control</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Role-based access</li>
+                            <li><i class="fas fa-check"></i> Multi-factor auth</li>
+                            <li><i class="fas fa-check"></i> Activity logging</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Customer Success Stories</h2>
+                    <p>See how organizations are transforming their financial operations.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"Workwise Pro has revolutionized our financial management. We've reduced processing time by 70% and improved accuracy significantly."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="image/testimonial1.webp" alt="Finance Director">
+                            <div class="author-info">
+                                <h4>Michael Chen</h4>
+                                <p>Finance Director, Global Solutions Inc.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"The automated reconciliation feature alone has saved us countless hours. The reporting capabilities are exceptional."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="image/testimonial2.webp" alt="CFO">
+                            <div class="author-info">
+                                <h4>Sarah Thompson</h4>
+                                <p>CFO, Tech Innovations Ltd.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing-section" id="demo">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Simple, Transparent Pricing</h2>
+                    <p>Choose the plan that best fits your organization's needs.</p>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Starter</h3>
+                        <div class="price">$29<span>/month</span></div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> Basic ledger management</li>
+                            <li><i class="fas fa-check"></i> Bank reconciliation</li>
+                            <li><i class="fas fa-check"></i> Standard reports</li>
+                        </ul>
+                        <a href="#" class="btn primary">Get Started</a>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3>Professional</h3>
+                        <div class="price">$79<span>/month</span></div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> Advanced ledger management</li>
+                            <li><i class="fas fa-check"></i> Automated reconciliation</li>
+                            <li><i class="fas fa-check"></i> Custom reports</li>
+                            <li><i class="fas fa-check"></i> API access</li>
+                        </ul>
+                        <a href="#" class="btn primary">Get Started</a>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Enterprise</h3>
+                        <div class="price">Custom</div>
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> Full feature access</li>
+                            <li><i class="fas fa-check"></i> Custom integrations</li>
+                            <li><i class="fas fa-check"></i> Dedicated support</li>
+                            <li><i class="fas fa-check"></i> Custom solutions</li>
+                        </ul>
+                        <a href="#" class="btn primary">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section class="resources-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Resources & Support</h2>
+                    <p>Everything you need to succeed with Workwise Pro Book-keeping.</p>
+                </div>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <i class="fas fa-book"></i>
+                        <h3>Documentation</h3>
+                        <p>Comprehensive guides and tutorials</p>
+                        <a href="#" class="learn-more">View Docs <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-video"></i>
+                        <h3>Video Tutorials</h3>
+                        <p>Step-by-step video guides</p>
+                        <a href="#" class="learn-more">Watch Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="resource-card">
+                        <i class="fas fa-headset"></i>
+                        <h3>24/7 Support</h3>
+                        <p>Expert help whenever you need it</p>
+                        <a href="#" class="learn-more">Contact Us <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer [Same as Baba theme] -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#integrations">Integrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Developers</h4>
+                    <ul>
+                        <li><a href="#api-docs">API Documentation</a></li>
+                        <li><a href="#sdk">SDKs & Tools</a></li>
+                        <li><a href="#status">System Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Workwise Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="bookkeepingscript.js"></script>
+</body>
+</html>

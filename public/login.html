@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Workwise Pro</title>
+    <link rel="stylesheet" href="logstyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay"></div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Workwise Pro</h1>
+            </div>
+            <nav id="nav-menu">
+                <ul id="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Login Section -->
+    <!-- Login Section -->
+    <section class="login">
+        <div class="container login-container">
+            <!-- Left Login Form -->
+            <div class="login-form">
+                <div class="form-header">
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to access Workwise Pro</p>
+                </div>
+                
+                <form id="loginForm">
+    <div class="form-group">
+        <label for="email">Email</label> <!-- Change label to Email -->
+        <input type="email" id="email" placeholder="Enter your email" required> <!-- Change id to email -->
+        <i class="fas fa-user input-icon"></i>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="••••••••" required>
+        <i class="fas fa-lock input-icon"></i>
+    </div>
+
+    <div class="form-group">
+        <label for="role">Login as</label>
+        <div class="custom-select">
+            <select id="role" required>
+                <option value="">Select role</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+                <option value="superadmin">Super Admin</option>
+            </select>
+            <i class="fas fa-chevron-down select-arrow"></i>
+        </div>
+    </div>
+
+    <button type="submit" class="btn primary">
+        <span>Sign In</span>
+        <i class="fas fa-arrow-right"></i>
+    </button>
+
+
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                </form>
+
+                <div class="separator">
+                    <span>or continue with</span>
+                </div>
+
+                <div class="social-icons">
+                    <button class="social-btn">
+                        <i class="fab fa-google"></i>
+                    </button>
+                    <button class="social-btn">
+                        <i class="fab fa-microsoft"></i>
+                    </button>
+                    <button class="social-btn">
+                        <i class="fab fa-apple"></i>
+                    </button>
+                </div>
+
+                <p class="signup-link">Don't have an account? <a href="signup.html">Create account</a></p>
+            </div>
+
+            <!-- Right Info Slider -->
+            <div class="login-info">
+                <div class="slider-container">
+                    <!-- MFA Slide -->
+                    <div class="slide active">
+                        <div class="slide-content">
+                            <img src="image/mfa-illustration.webp" alt="MFA" class="slide-image">
+                            <h3>MFA for all accounts</h3>
+                            <p>Secure online accounts with 2FA. Back up OTP secrets and never lose access to your accounts.</p>
+                            <a href="#" class="btn secondary">Learn more</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Passwordless Slide -->
+                    <div class="slide">
+                        <div class="slide-content">
+                            <img src="image/passwordless-illustration.webp" alt="Passwordless" class="slide-image">
+                            <h3>Passwordless sign-in</h3>
+                            <p>Move away from risky passwords and experience one-tap access. Download and install OneAuth.</p>
+                            <a href="#" class="btn secondary">Get Started</a>
+                        </div>
+                    </div>
+
+                    <!-- Slider Navigation Dots -->
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Workwise Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Slider functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[n].classList.add('active');
+            dots[n].classList.add('active');
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+
+        // Auto-advance slider every 5 seconds
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }, 5000);
+// Dummy credentials and login functionality
+  
+      document.getElementById('loginForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value; // Change username to email
+    const password = document.getElementById('password').value;
+    const role = document.getElementById('role').value;
+
+    const response = await fetch('/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password, role }) // Use email in the request
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('token', data.token);
+        window.location.href = role === 'user' ? 'dashboard.html' : 'user-dashboard.html';
+    } else {
+        alert('Invalid credentials. Please try again.');
+    }
+});
+    </script>
+    
+     <script src="script.js"></script>
+</body>
+</html>
