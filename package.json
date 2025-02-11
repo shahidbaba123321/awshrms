@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "init-db": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -12,12 +13,11 @@
     "mysql2": "^2.3.3",
     "bcrypt": "^5.0.1",
     "jsonwebtoken": "^8.5.1",
-    "path": "^0.12.7",
     "cors": "^2.8.5",
-    "dotenv": "^16.0.0",
     "helmet": "^5.0.2",
     "compression": "^1.7.4",
-    "express-rate-limit": "^6.3.0"
+    "express-rate-limit": "^6.3.0",
+    "dotenv": "^16.0.0"
   },
   "engines": {
     "node": ">=14.0.0"
@@ -30,13 +30,5 @@
     "mysql"
   ],
   "author": "Your Name",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "your-repository-url"
-  },
-  "bugs": {
-    "url": "your-repository-url/issues"
-  },
-  "homepage": "your-repository-url#readme"
+  "license": "MIT"
 }
