@@ -2,116 +2,137 @@ const express = require('express');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { MongoClient } = require('mongodb');
+const mysql = require('mysql2/promise');
 
 const app = express();
 
-// MongoDB connection
-const uri = process.env.MONGODB_URI; // Ensure this environment variable is set
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// MySQL connection pool
+const pool = mysql.createPool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
+});
 
-async function connectDB() {
-  try {
-    await client.connect();
-    console.log("Connected to MongoDB Atlas");
-  } catch (err) {
-    console.error("Error connecting to MongoDB Atlas:", err);
-  }
+// Test database connection
+async function testConnection() {
+    try {
+        const connection = await pool.getConnection();
+        console.log('Connected to MySQL Database');
+        connection.release();
+    } catch (err) {
+        console.error('Error connecting to database:', err);
+    }
 }
 
-connectDB();
+testConnection();
 
 app.use(express.json());
 
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Health check for AWS
+app.get('/health', (req, res) => {
+    res.status(200).send('OK');
+});
+
 // Serve index.html for the root route
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Serve login.html for the login route
 app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'login.html'));
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
 
 // Login endpoint
 app.post('/login', async (req, res) => {
-  const { email, password, role } = req.body; // Change username to email
-  try {
-    const database = client.db('infocraftorbis');
-    const users = database.collection('users');
-    const user = await users.findOne({ email, role }); // Use email in the query
+    const { email, password, role } = req.body;
+    try {
+        const [users] = await pool.execute(
+            'SELECT * FROM users WHERE email = ? AND role = ?',
+            [email, role]
+        );
 
-    console.log('User found:', user);
+        if (users.length > 0) {
+            const user = users[0];
+            const isPasswordMatch = await bcrypt.compare(password, user.password);
 
-    if (user) {
-      const isPasswordMatch = await bcrypt.compare(password, user.password);
-      console.log('Password match:', isPasswordMatch);
-
-      if (isPasswordMatch) {
-        const token = jwt.sign({ email: user.email, role: user.role }, process.env.JWT_SECRET);
-        res.json({ token });
-      } else {
-        res.status(401).send('Invalid credentials');
-      }
-    } else {
-      res.status(401).send('Invalid credentials');
+            if (isPasswordMatch) {
+                const token = jwt.sign(
+                    { email: user.email, role: user.role },
+                    process.env.JWT_SECRET
+                );
+                res.json({ token });
+            } else {
+                res.status(401).send('Invalid credentials');
+            }
+        } else {
+            res.status(401).send('Invalid credentials');
+        }
+    } catch (error) {
+        console.error('Error during login:', error);
+        res.status(500).send('Server error');
     }
-  } catch (error) {
-    console.error('Error during login:', error);
-    res.status(500).send('Server error');
-  }
 });
+
 // Register endpoint
 app.post('/register', async (req, res) => {
-  const { email, password, role } = req.body;
-  try {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const database = client.db('infocraftorbis');
-    const users = database.collection('users');
-    await users.insertOne({ email, password: hashedPassword, role });
-    res.status(201).send('User registered');
-  } catch (error) {
-    console.error('Error during registration:', error);
-    res.status(500).send('Server error');
-  }
+    const { email, password, role } = req.body;
+    try {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        await pool.execute(
+            'INSERT INTO users (email, password, role) VALUES (?, ?, ?)',
+            [email, hashedPassword, role]
+        );
+        res.status(201).send('User registered');
+    } catch (error) {
+        console.error('Error during registration:', error);
+        res.status(500).send('Server error');
+    }
 });
-
-
 
 // API Endpoint for Payroll Metrics
 app.get('/api/payroll-metrics', async (req, res) => {
-  try {
-    const database = client.db('infocraftorbis');
-    const payroll = database.collection('payroll');
-    const metrics = await payroll.aggregate([
-      { $group: { _id: "$region", totalAmount: { $sum: "$amount" }, avgTaxRate: { $avg: "$taxRate" } } }
-    ]).toArray();
-    res.json(metrics);
-  } catch (error) {
-    console.error('Error fetching payroll metrics:', error);
-    res.status(500).send('Server error');
-  }
+    try {
+        const [metrics] = await pool.execute(`
+            SELECT 
+                region,
+                SUM(amount) as totalAmount,
+                AVG(tax_rate) as avgTaxRate
+            FROM payroll
+            GROUP BY region
+        `);
+        res.json(metrics);
+    } catch (error) {
+        console.error('Error fetching payroll metrics:', error);
+        res.status(500).send('Server error');
+    }
 });
 
 // API Endpoint for Performance Analytics
 app.get('/api/performance-analytics', async (req, res) => {
-  try {
-    const database = client.db('infocraftorbis');
-    const performance = database.collection('performance');
-    const analytics = await performance.aggregate([
-      { $group: { _id: "$metric", avgScore: { $avg: "$score" } } }
-    ]).toArray();
-    res.json(analytics);
-  } catch (error) {
-    console.error('Error fetching performance analytics:', error);
-    res.status(500).send('Server error');
-  }
+    try {
+        const [analytics] = await pool.execute(`
+            SELECT 
+                metric,
+                AVG(score) as avgScore
+            FROM performance
+            GROUP BY metric
+        `);
+        res.json(analytics);
+    } catch (error) {
+        console.error('Error fetching performance analytics:', error);
+        res.status(500).send('Server error');
+    }
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
