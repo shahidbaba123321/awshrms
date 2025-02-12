@@ -4,8 +4,7 @@
   "description": "Workwise Pro - HR Management System",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "postinstall": "npm install"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.17.1",
