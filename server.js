@@ -10,6 +10,15 @@ const rateLimit = require('express-rate-limit');
 
 const app = express();
 
+// Environment variable validation
+const requiredEnvVars = ['DB_HOST', 'DB_USER', 'DB_PASSWORD', 'DB_NAME', 'JWT_SECRET'];
+requiredEnvVars.forEach((varName) => {
+    if (!process.env[varName]) {
+        console.error(`Error: Environment variable ${varName} is not set.`);
+        process.exit(1);
+    }
+});
+
 // Security Middleware
 app.use(helmet());
 app.use(compression());
@@ -37,8 +46,9 @@ const pool = mysql.createPool({
 
 // Database initialization function
 async function initializeDatabase() {
+    let connection;
     try {
-        const connection = await pool.getConnection();
+        connection = await pool.getConnection();
         console.log('Connected to MySQL Database');
 
         // Users Table
@@ -125,25 +135,28 @@ async function initializeDatabase() {
         `, [adminPassword]);
 
         console.log('Database initialized successfully');
-        connection.release();
     } catch (error) {
         console.error('Error initializing database:', error);
         throw error;
+    } finally {
+        if (connection) connection.release();
     }
 }
 
 // Middleware to verify JWT
-const authenticateToken = (req, res, next) => {
+const authenticateToken = async (req, res, next) => {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
 
     if (!token) return res.sendStatus(401);
 
-    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-        if (err) return res.sendStatus(403);
+    try {
+        const user = await jwt.verify(token, process.env.JWT_SECRET);
         req.user = user;
         next();
-    });
+    } catch (err) {
+        return res.sendStatus(403);
+    }
 };
 
 // Routes
@@ -160,10 +173,12 @@ app.get('/login', (req, res) => {
 });
 
 // Login endpoint
-app.post('/login', async (req, res) => {
+app.post('/login', limiter, async (req, res) => {
     const { email, password, role } = req.body;
+    let connection;
     try {
-        const [users] = await pool.execute(
+        connection = await pool.getConnection();
+        const [users] = await connection.execute(
             'SELECT * FROM users WHERE email = ? AND role = ?',
             [email, role]
         );
@@ -180,7 +195,7 @@ app.post('/login', async (req, res) => {
                 );
                 
                 // Update last login
-                await pool.execute(
+                await connection.execute(
                     'UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = ?',
                     [user.id]
                 );
@@ -195,44 +210,58 @@ app.post('/login', async (req, res) => {
     } catch (error) {
         console.error('Error during login:', error);
         res.status(500).send('Server error');
+    } finally {
+        if (connection) connection.release();
     }
 });
 
 // Protected routes
 app.get('/api/employees', authenticateToken, async (req, res) => {
+    let connection;
     try {
-        const [employees] = await pool.execute('SELECT * FROM employees');
+        connection = await pool.getConnection();
+        const [employees] = await connection.execute('SELECT * FROM employees');
         res.json(employees);
     } catch (error) {
         console.error('Error fetching employees:', error);
         res.status(500).send('Server error');
+    } finally {
+        if (connection) connection.release();
     }
 });
 
 app.get('/api/payroll', authenticateToken, async (req, res) => {
+    let connection;
     try {
-        const [payroll] = await pool.execute('SELECT * FROM payroll');
+        connection = await pool.getConnection();
+        const [payroll] = await connection.execute('SELECT * FROM payroll');
         res.json(payroll);
     } catch (error) {
         console.error('Error fetching payroll:', error);
         res.status(500).send('Server error');
+    } finally {
+        if (connection) connection.release();
     }
 });
 
 app.get('/api/performance', authenticateToken, async (req, res) => {
+    let connection;
     try {
-        const [performance] = await pool.execute('SELECT * FROM performance');
+        connection = await pool.getConnection();
+        const [performance] = await connection.execute('SELECT * FROM performance');
         res.json(performance);
     } catch (error) {
         console.error('Error fetching performance:', error);
         res.status(500).send('Server error');
+    } finally {
+        if (connection) connection.release();
     }
 });
 
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).send('Something broke!');
+    res.status(err.status || 500).send({ error: err.message || 'Something broke!' });
 });
 
 // Start server and initialize database
